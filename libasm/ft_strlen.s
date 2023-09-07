@@ -2,9 +2,17 @@ bits 64
 
 global ft_strlen
 
-section .text:
+section .text
     ft_strlen:
-        MOV rax, 0
+        mov rax, 0
+        jmp loop    
 
-    loop:     
-        
+    cloop:
+        inc rax
+
+    loop:
+        cmp byte [rdi + rax], 0x00
+        jne cloop
+        ret
+
+;rcx doesn't work - rax does... why ?
