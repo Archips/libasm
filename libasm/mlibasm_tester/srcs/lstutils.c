@@ -30,7 +30,7 @@ void    ft_print_list(t_list *begin_list)
 {
     while (begin_list != NULL)
     {
-        printf("%s", begin_list->data);
+        /* printf("%s", begin_list->data); */
             if (begin_list->next)
                 printf(" -> ");
         begin_list = begin_list->next;
