@@ -8,12 +8,13 @@ section .text
         mov rcx, 0
 
     endloop:
-        mov [rsi + rcx], 0x00
-        mov rax, rsi
+        mov byte [rdi + rcx], 0x00
+        mov rax, rdi
         ret
 
     loop:
         cmp byte [rdi + rcx], 0x00
         je endloop
-        mov [rsi + rcx], [rdi + rcx]
+        mov bl, byte [rsi + rcx]
+        mov byte [rdi + rcx], bl
         inc rcx
