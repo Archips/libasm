@@ -23,12 +23,12 @@ void test_strlen(const char *s) {
 void test_strcmp(const char *s1, const char *s2) {
 
     int ret1 = ft_strcmp(s1, s2);
-    int err1 = errno;
+	int err1 = errno;
 
     int ret2 = strcmp(s1, s2);
     int err2 = errno;
 
-    if (ret1 == ret2 && err1 == err2) {
+	if (((!ret1 && !ret2) || (ret1 < 0 && ret2 < 0) || (ret1 > 0 && ret2 > 0)) && err1 == err2) {
         printf("OK\n");
     } else {
         printf("KO\n");
@@ -45,7 +45,7 @@ int		main(void)
     test_strlen("Hello this should work");
 
     printf("\n====================================\n");
-    printf("ft_strcmp:\n\n");
+    printf("\nft_strcmp:\n\n");
 
     test_strcmp("Hello", "Hello");
     test_strcmp("Hello!", "Hello");
