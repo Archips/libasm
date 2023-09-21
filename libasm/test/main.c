@@ -1,9 +1,11 @@
 #include <string.h>
 #include <errno.h>
+#include <unistd.h>
 #include <stdio.h>
 
 size_t  ft_strlen(const char *s);
 int     ft_strcmp(const char *s1, const char *s2);
+size_t ft_write(int fd, const char *s, size_t size);
 
 void test_strlen(const char *s) {
 
@@ -29,6 +31,21 @@ void test_strcmp(const char *s1, const char *s2) {
     int err2 = errno;
 
 	if (((!ret1 && !ret2) || (ret1 < 0 && ret2 < 0) || (ret1 > 0 && ret2 > 0)) && err1 == err2) {
+        printf("OK\n");
+    } else {
+        printf("KO\n");
+    }
+}
+
+void test_write(int fd, const char *s, size_t size) {
+
+    size_t ret1 = ft_write(fd, s, size);
+    int err1 = errno;
+
+    size_t ret2 = write(fd, s, size);
+    int err2 = errno;
+
+    if (ret1 == ret2 && err1 == err2) {
         printf("OK\n");
     } else {
         printf("KO\n");
@@ -63,4 +80,21 @@ int		main(void)
     test_strcmp("You might pass all these tests", "Or not");
     test_strcmp("or not", "Or not");
     test_strcmp("or noT", "or not");
+
+    printf("\n====================================\n");
+    printf("ft_write:\n\n");
+
+    test_write(9, "Hello", 5);
+    test_write(0, "Hello!", 6);
+    test_write(0, NULL, 5);
+    test_write(-1, NULL, 5);
+    test_write(0, "ABCEDFGEFGH", 9);
+    test_write(9, "ABCEDFGEFGH", 9);
+    test_write(0, NULL, -1);
+    test_write(0, "A longer sentence!", 18);
+
+    test_write(1, "Hello!", 6);
+    test_write(1, NULL, 5);
+    test_write(1, NULL, -1);
+    test_write(1, "A longer sentence!", 18);
 }
