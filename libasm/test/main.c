@@ -39,13 +39,19 @@ void test_strcmp(const char *s1, const char *s2) {
 
 void test_write(int fd, const char *s, size_t size) {
 
-    size_t ret1 = ft_write(fd, s, size);
+    errno = 0;
+	size_t ret1 = ft_write(fd, s, size);
     int err1 = errno;
-
     size_t ret2 = write(fd, s, size);
     int err2 = errno;
-
-    if (ret1 == ret2 && err1 == err2) {
+	if (fd < 0 || fd > 2)
+		printf("wrong fd\n");
+	if (!s)
+		printf("s is NULL\n");
+	if (size < 1)
+		printf("wrong size\n");
+	printf("err1 = %d && err2 = %d\n", err1, err2);
+	if (ret1 == ret2 && err1 == err2) {
         printf("OK\n");
     } else {
         printf("KO\n");
@@ -82,19 +88,19 @@ int		main(void)
     test_strcmp("or noT", "or not");
 
     printf("\n====================================\n");
-    printf("ft_write:\n\n");
+    printf("\nft_write:\n\n");
 
-    test_write(9, "Hello", 5);
-    test_write(0, "Hello!", 6);
+    test_write(9, "Hello\n", 6);
+    test_write(0, "Hello!\n", 7);
     test_write(0, NULL, 5);
     test_write(-1, NULL, 5);
-    test_write(0, "ABCEDFGEFGH", 9);
-    test_write(9, "ABCEDFGEFGH", 9);
+    test_write(0, "ABCEDFGEF\nGH\n", 10);
+    test_write(9, "ABCEDFGEF\nGH\n", 10);
     test_write(0, NULL, -1);
-    test_write(0, "A longer sentence!", 18);
+    test_write(0, "A longer sentence!\n", 19);
 
-    test_write(1, "Hello!", 6);
+    test_write(1, "Hello!\n", 7);
     test_write(1, NULL, 5);
     test_write(1, NULL, -1);
-    test_write(1, "A longer sentence!", 18);
+    test_write(1, "A longer sentence!\n", 19);
 }
