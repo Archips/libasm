@@ -119,8 +119,10 @@ void test_strdup(const char *s1) {
         } else {
             printf("KO\n");
         }
-        free(ret1);
-        free(ret2);
+        if (ret1)
+			free(ret1);
+        if (ret2)
+			free(ret2);
 }
 
 int		main(void)
