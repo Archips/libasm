@@ -1,5 +1,8 @@
 #include <string.h>
 #include <errno.h>
+#include <stdio.h>
+
+size_t ft_strlen(const char *s);
 
 
 void test_strlen(const char *s) {

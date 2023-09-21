@@ -1,31 +1,35 @@
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 
-SRCS = srcs/ft_strlen.s \
-	   srcs/ft_strcpy.s \
-	   srcs/ft_strcmp.s \
-	   srcs/ft_write.s \
-	   srcs/ft_read.s \
-	   srcs/ft_strdup.s
+src = src/ft_strlen.s \
+	   src/ft_strcpy.s \
+	   src/ft_strcmp.s \
+	   src/ft_write.s \
+	   src/ft_read.s \
+	   src/ft_strdup.s
 
-OBJ_DIR = objs
-OBJS = ${SRCS:%.s=$(OBJ_DIR)/%.o}
+OBJS = ${patsubst src/%.s,obj/%.o,$(src)}
 NAME = libasm.a
 CC = nasm -f elf64
 RM = rm -rf
 
-all: ${NAME}
+all: obj ${NAME}
+
+obj:
+	mkdir -p obj
 
 ${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS}
 
-${OBJ_DIR}/%.o: %.s
-	mkdir -p ${OBJ_DIR}
-	${CC} -o $@
+obj/%.o: src/%.s
+	${CC} $< -o $@
+
+test:
+	gcc -Wall -Wextra -Werror test/main.c -o tester -L. -lasm 
 
 clean: 
-	${RM} ${OBJ_DIR}
+	${RM} -r obj
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} tester
 
 re: fclean all
