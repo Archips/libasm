@@ -14,5 +14,3 @@ section .text
         cmp byte [rdi + rax], 0x00
         jne cloop
         ret
-
-;rcx doesn't work - rax does... why ?

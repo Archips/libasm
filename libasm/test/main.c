@@ -171,25 +171,25 @@ int		main(void)
     test_write(1, NULL, -1);
     test_write(1, "A longer sentence!\n", 19);
 
-//    printf("\n====================================\n");
-//    printf("\nft_read:\n\n");
-//
-//    test_read(9, 9, 5);
-//    test_read(9, 9, 9);
-//
-//    test_read(rdfd, rdfd_true, 5);
-//    test_read(rdfd, rdfd_true, 1);
-//    test_read(rdfd, rdfd_true, 9);
-//    test_read(rdfd, rdfd_true, 7);
-//    test_read(rdfd, rdfd_true, 18);
-//    test_read(rdfd, rdfd_true, 30);
-//
-//    test_read(wrfd, wrfd, 5);
-//    test_read(wrfd, wrfd, 1);
-//    test_read(wrfd, wrfd, 9);
-//    test_read(wrfd, wrfd, 7);
-//    test_read(wrfd, wrfd, 18);
-//    test_read(wrfd, wrfd, 30);
+    /* printf("\n====================================\n"); */
+    /* printf("\nft_read:\n\n"); */
+
+    /* test_read(9, 9, 5); */
+    /* test_read(9, 9, 9); */
+
+    /* test_read(rdfd, rdfd_true, 5); */
+    /* test_read(rdfd, rdfd_true, 1); */
+    /* test_read(rdfd, rdfd_true, 9); */
+    /* test_read(rdfd, rdfd_true, 7); */
+    /* test_read(rdfd, rdfd_true, 18); */
+    /* test_read(rdfd, rdfd_true, 30); */
+
+    /* test_read(wrfd, wrfd, 5); */
+    /* test_read(wrfd, wrfd, 1); */
+    /* test_read(wrfd, wrfd, 9); */
+    /* test_read(wrfd, wrfd, 7); */
+    /* test_read(wrfd, wrfd, 18); */
+    /* test_read(wrfd, wrfd, 30); */
 
     printf("\n====================================\n");
     printf("\nft_strcpy:\n\n");

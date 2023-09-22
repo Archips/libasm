@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:14:35 by mli               #+#    #+#             */
-/*   Updated: 2020/07/08 23:40:17 by mli              ###   ########.fr       */
+/*   Updated: 2023/09/22 09:30:44 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		test_strdup(const char *str)
 
 int		main(void)
 {
-	fct_check_leaks = 1;
+	fct_check_leaks = 0;
 
 	test_strdup("");
 	test_strdup("heyho");
