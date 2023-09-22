@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 size_t  ft_strlen(const char *s);
 int     ft_strcmp(const char *s1, const char *s2);
@@ -48,13 +49,6 @@ void test_write(int fd, const char *s, size_t size) {
     int err1 = errno;
     size_t ret2 = write(fd, s, size);
     int err2 = errno;
-	if (fd < 0 || fd > 2)
-		printf("wrong fd\n");
-	if (!s)
-		printf("s is NULL\n");
-	if (size < 1)
-		printf("wrong size\n");
-	printf("err1 = %d && err2 = %d\n", err1, err2);
 	if (ret1 == ret2 && err1 == err2) {
         printf("OK\n");
     } else {
@@ -157,39 +151,74 @@ int		main(void)
     printf("\n====================================\n");
     printf("\nft_write:\n\n");
 
+	printf("fd not open\n");
     test_write(9, "Hello\n", 6);
-    test_write(0, "Hello!\n", 7);
-    test_write(0, NULL, 5);
-    test_write(-1, NULL, 5);
-    test_write(0, "ABCEDFGEF\nGH\n", 10);
-    test_write(9, "ABCEDFGEF\nGH\n", 10);
-    test_write(0, NULL, -1);
-    test_write(0, "A longer sentence!\n", 19);
+	printf("-----------\n");
+    
+	printf("all good\n");
+	test_write(0, "Hello!\n", 7);
+	printf("-----------\n");
+    
+	printf("char * is NULL\n");
+	test_write(0, NULL, 5);
+	printf("-----------\n");
 
-    test_write(1, "Hello!\n", 7);
-    test_write(1, NULL, 5);
-    test_write(1, NULL, -1);
-    test_write(1, "A longer sentence!\n", 19);
+	printf("Not writtable\n");
+	int fd = open("./files/no_writting_right", O_RDWR);
+    test_write(fd, "hello\n", 6);
+	close(fd);
+	printf("-----------\n");
+    
+	printf("No rights\n");
+	fd = open("./files/no_rights", O_RDWR);
+    test_write(fd, "hello\n", 6);
+	close(fd);
+	printf("-----------\n");
+	
+	printf("Writtable\n");
+	fd = open("./files/write", O_RDWR);
+    test_write(fd, "hello\n", 6);
+	close(fd);
+	printf("-----------\n");
 
-    /* printf("\n====================================\n"); */
-    /* printf("\nft_read:\n\n"); */
+	printf("Size < 0\n");
+	test_write(1, "hello\n", -4);
+	printf("-----------\n");
 
+    printf("\n====================================\n");
+    printf("\nft_read:\n\n");
+
+	char buf[1024];
+	char c;
+	printf("Standard Input\n");
+	test_read(0, buf, 6);
+	printf("buf [%s]\n", buf);
+	printf("-----------\n");
+
+	printf("Readable\n");
+	/* bzero(buf, 1024); */
+	fd = open("./files/readable", O_RDONLY);
+	while (ft_read(fd, &c, 1))
+		ft_write(1, &c, 1);
+	close(fd);
+	/* printf("buf [%s]\n", buf); */
+	printf("-----------\n");
     /* test_read(9, 9, 5); */
     /* test_read(9, 9, 9); */
 
-    /* test_read(rdfd, rdfd_true, 5); */
-    /* test_read(rdfd, rdfd_true, 1); */
-    /* test_read(rdfd, rdfd_true, 9); */
-    /* test_read(rdfd, rdfd_true, 7); */
-    /* test_read(rdfd, rdfd_true, 18); */
-    /* test_read(rdfd, rdfd_true, 30); */
+    /* test_read(1, 1, 5); */
+    /* test_read(1, 1, 1); */
+    /* test_read(1, 1, 9); */
+    /* test_read(1, 1, 7); */
+    /* test_read(1, 1, 18); */
+    /* test_read(1, 1, 30); */
 
-    /* test_read(wrfd, wrfd, 5); */
-    /* test_read(wrfd, wrfd, 1); */
-    /* test_read(wrfd, wrfd, 9); */
-    /* test_read(wrfd, wrfd, 7); */
-    /* test_read(wrfd, wrfd, 18); */
-    /* test_read(wrfd, wrfd, 30); */
+    /* test_read(-1, 4, 5); */
+    /* test_read(-1, 4, 1); */
+    /* test_read(-1, 4, 9); */
+    /* test_read(-1, 4, 7); */
+    /* test_read(-1, 4, 18); */
+    /* test_read(-1, 4, 30); */
 
     printf("\n====================================\n");
     printf("\nft_strcpy:\n\n");
