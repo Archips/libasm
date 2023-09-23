@@ -23,7 +23,25 @@ ${NAME}: ${OBJS}
 obj/%.o: src/%.s
 	${CC} $< -o $@
 
-test:
+strlen:
+	clang -Wall -Wextra -Werror test/ft_strlen.c -o strlen -L. -lasm
+
+strcmp:
+	clang -Wall -Wextra -Werror test/ft_strcmp.c -o strcmp -L. -lasm
+
+strcpy:
+	clang -Wall -Wextra -Werror test/ft_strcpy.c -o strcpy -L. -lasm
+
+strdup:
+	clang -Wall -Wextra -Werror test/ft_strdup.c -o strdup -L. -lasm
+
+write:
+	clang -Wall -Wextra -Werror test/ft_write.c -o write -L. -lasm
+
+read:
+	clang -Wall -Wextra -Werror test/ft_read.c -o read -L. -lasm
+
+test_all:
 	clang -Wall -Wextra -Werror test/main.c -o tester -L. -lasm 
 
 clean: 
