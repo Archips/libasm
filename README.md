@@ -19,7 +19,7 @@ This project is a library of 64-bit Assembly language functions that adhere to s
 
 ## Complete Tutorial
 
-[Yet another libasm](https://cute-balance-43f.notion.site/Yet-another-libasm-f15a6a72e0f041e293ae7bcfb6c564cd?pvs=4)
+[Yet another libasm](https://cute-balance-43f.notion.site/Yet-another-libasm-f15a6a72e0f041e293ae7bcfb6c564cd)
 
 Tuto: 
   - https://www.youtube.com/watch?v=GPx4fUEmYJ8
