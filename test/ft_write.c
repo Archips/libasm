@@ -15,7 +15,7 @@ void test_write(int fd, const char *s, size_t size) {
 
 int		main(void)
 {
-    printf("\nft_write:\n\n");
+    printf("ft_write:\n\n");
 
     result = 0;
 

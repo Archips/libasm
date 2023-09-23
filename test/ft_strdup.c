@@ -21,7 +21,7 @@ void test_strdup(const char *s1) {
 
 int		main(void)
 {
-    printf("\nft_strdup:\n\n");
+    printf("ft_strdup:\n\n");
 
     result = 0;
 

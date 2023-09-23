@@ -42,12 +42,12 @@ read:
 	clang -Wall -Wextra -Werror test/ft_read.c -o read -L. -lasm
 
 test_all:
-	clang -Wall -Wextra -Werror test/main.c -o tester -L. -lasm 
+	clang -Wall -Wextra -Werror test/main.c -o libasm_tester -L. -lasm 
 
 clean: 
 	${RM} -r obj
 
 fclean: clean
-	${RM} ${NAME} tester
+	${RM} ${NAME} libasm_tester strlen strcpy strcmp strdup write read
 
 re: fclean all

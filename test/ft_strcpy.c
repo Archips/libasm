@@ -34,7 +34,7 @@ void test_strcpy(char * dst, const char * src) {
 int		main(void)
 {
 
-    printf("\nft_strcpy:\n\n");
+    printf("ft_strcpy:\n\n");
 
     result = 0;
 

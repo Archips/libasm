@@ -54,7 +54,7 @@ void test_read(int fd, size_t nbyte, char *filename) {
 
 int		main(void)
 {
-    printf("\nft_read:\n\n");
+    printf("ft_read:\n\n");
 
     result = 0;
 

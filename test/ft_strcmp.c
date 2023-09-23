@@ -17,7 +17,7 @@ void test_strcmp(const char *s1, const char *s2) {
 int		main(void)
 {
 
-    printf("\nft_strcmp:\n\n");
+    printf("ft_strcmp:\n\n");
 
     result = 0;
     test_strcmp("Hello", "Hello");
