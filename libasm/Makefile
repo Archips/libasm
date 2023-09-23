@@ -24,7 +24,7 @@ obj/%.o: src/%.s
 	${CC} $< -o $@
 
 test:
-	gcc -Wall -Wextra -Werror test/main.c -o tester -L. -lasm 
+	clang -Wall -Wextra -Werror test/main.c -o tester -L. -lasm 
 
 clean: 
 	${RM} -r obj
