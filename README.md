@@ -17,7 +17,7 @@ This project is a library of 64-bit Assembly language functions that adhere to s
 4. Use the `libasm.a` library in your projects.
 5. Use this command to test it with a test main.c `gcc -Wall -Wextra -Werror main.c -L. -lasm` 
 
-## Complete Tutorial
+## Help ?
 
 [Yet another libasm](https://cute-balance-43f.notion.site/Yet-another-libasm-f15a6a72e0f041e293ae7bcfb6c564cd)
 
