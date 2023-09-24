@@ -41,7 +41,7 @@ write:
 read:
 	clang -Wall -Wextra -Werror test/ft_read.c -o read -L. -lasm
 
-test_all:
+libasm_tester:
 	clang -Wall -Wextra -Werror test/main.c -o libasm_tester -L. -lasm 
 
 clean: 

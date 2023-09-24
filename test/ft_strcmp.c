@@ -20,22 +20,22 @@ int		main(void)
     printf("ft_strcmp:\n\n");
 
     result = 0;
-    test_strcmp("Hello", "Hello");
-    test_strcmp("Hello!", "Hello");
-    test_strcmp("Hello", "Hello!");
-    test_strcmp("He!!o", "Hello");
-    test_strcmp("Hello", "He!!o");
+    test_strcmp("Salut", "Salut");
+    test_strcmp("Salut!", "Salut");
+    test_strcmp("Salut", "Salut!");
+    test_strcmp("He!!o", "Salut");
+    test_strcmp("Salut", "Sa!ut");
 
-    test_strcmp("Hello\tHi", "Hello\tHi");
-    test_strcmp("Hello\200Hi", "Hello\0Hi");
-    test_strcmp("Hello\0Hi", "Hello\200Hi");
-    test_strcmp("Hello\200Hi", "Hello\200Hi");
-    test_strcmp("Hello\0Hi", "Hello\0Hi");
+    test_strcmp("salut\tHola", "salut\tHola");
+    test_strcmp("salut\200Hola", "salut\0Hola");
+    test_strcmp("salut\0Hola", "salut\200Hola");
+    test_strcmp("salut\200Hola", "salut\200Hola");
+    test_strcmp("salut\0Hola", "salut\0Hola");
 
-    test_strcmp("This string is longer", "This string is longer");
-    test_strcmp("You might pass all these tests", "Or not");
+    test_strcmp("Hellooooooooooooooo", "Hellooooooooooooooo");
+    test_strcmp("That's a lot of tests", "That's life");
     test_strcmp("or not", "Or not");
-    test_strcmp("or noT", "or not");
+    test_strcmp("it is", "it iS");
 
     printf("result : %d/14\n", result);
     printf("\n====================================\n");
